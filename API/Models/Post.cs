@@ -1,4 +1,6 @@
-﻿namespace API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace API.Models
 {
     public class Post
     {
@@ -10,6 +12,10 @@
         public int Views { get; set; }
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
         public ICollection<Comment>? Comments { get; set; } = new List<Comment>();
+
+        [ForeignKey("Sub")]
+        public int SubId { get; set; }
+        public Sub Sub { get; set; }
 
     }
 }
